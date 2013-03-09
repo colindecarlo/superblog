@@ -2,11 +2,16 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = new \Silex\Application();
+$app = new Silex\Application();
 $app['debug'] = true;
 
-$app->get('/', function () {
-	return "This will be a blog.";
+// register the twig service provider
+$app->register(new Silex\Provider\TwigServiceProvider(),
+	['twig.path' => __DIR__ . '/../views']
+);
+
+$app->get('/', function () use ($app) {
+	return $app['twig']->render('home.twig');
 });
 
 $app->run();

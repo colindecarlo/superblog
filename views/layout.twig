@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Silex Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/normalize.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="/css/site.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+  	<div class="container">
+		<header>
+			{% block header %}
+			<h1>Super Blog</h1>
+			<p>Not just any demo blog</p>
+			{% endblock header %}
+		</header>
+		<div class="row">
+			<div class="span9">
+				{% block content %}{% endblock content %}
+			</div>
+			<div class="span3">
+				{% block sidebar %}{% endblock sidebar %}
+			</div>
+		</div>
+	</div>
+    <script src="/js/jquery-1.9.1.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </body>
+</html>
