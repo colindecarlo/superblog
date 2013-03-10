@@ -1,0 +1,24 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<form class="form-horizontal" action="{{ path('admin_login_check') }}" method="post">
+	{{ error }}
+  <div class="control-group">
+    <label class="control-label" for="_username">Username</label>
+    <div class="controls">
+      <input type="text" name="_username" value="{{ last_username }}" placeholder="username">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="_password">Password</label>
+    <div class="controls">
+      <input type="password" name="_password" placeholder="password">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>
+{% endblock content %}
