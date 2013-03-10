@@ -1,5 +1,22 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-Let's write a blog post!
+<div id="new-post">
+	<form class="form-horizontal" action="/admin/new" method="post">
+		<fieldset>
+			<legend>One more monkey at the keyboard</legend>
+			<div class="post-element">
+				<input class="title" type="text" name="title" value="{{ post.title }}" placeholder="Title">
+			</div>
+			<div class="post-element">
+				<textarea class="content" name="content" placeholder="A long time ago in a galaxy far, far away...">
+					{{- post.content -}}
+				</textarea>
+			</div>
+			<div class="post-element pull-right">
+				<button type="submit" class="btn btn-large btn-primary">Post</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
 {% endblock content %}

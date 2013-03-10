@@ -40,7 +40,16 @@ $app->get('/login', function (Request $request) use ($app) {
 });
 
 $app->get('/admin/new', function () use ($app) {
-	return $app['twig']->render('admin/new.twig');
+	return $app['twig']->render('admin/new.twig', ['post' => ['title' => '', 'content' => '']]);
+});
+
+$app->post('/admin/new', function (Request $request) use ($app) {
+	return $app['twig']->render('admin/new.twig', [
+		'post' => [
+			'title' => $request->request->get('title'),
+			'content'=> $request->request->get('content')
+		]
+	]);
 });
 
 $app->run();
