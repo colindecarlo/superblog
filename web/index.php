@@ -39,4 +39,8 @@ $app->get('/login', function (Request $request) use ($app) {
 	]);
 });
 
+$app->get('/admin/new', function () use ($app) {
+	return $app['twig']->render('admin/new.twig');
+});
+
 $app->run();
