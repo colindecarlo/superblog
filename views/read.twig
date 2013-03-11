@@ -17,4 +17,5 @@
 		</div>
 	{% endif %}
 
+	{% include 'comment-form.twig' with {'post_id': post.post_id} %}
 {% endblock content %}

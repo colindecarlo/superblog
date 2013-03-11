@@ -1,0 +1,13 @@
+<div class="new-comment">
+	<h2>Weigh In</h2>
+	<form id="comment-form" action="/comment" method="post">
+		<input type="hidden" name="post_id" value="{{ post_id }}" />
+		<div class="comment">
+			<textarea name="comment" placeholder="very insightful, I would like to add constructive criticism ..."></textarea>
+		</div>
+		<div class="email">
+			<input type="text" name="email" placeholder="you@example.com">
+		</div>
+		<button type="submit" class="btn">Comment</button>
+	</form>
+</div>

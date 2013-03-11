@@ -88,4 +88,17 @@ $app->get('/read/{postId}', function ($postId) use ($app) {
 })
 ->assert('postId', '\d+');
 
+$app->post('/comment', function (Request $request) use ($app) {
+	$comment = [
+		'post_id' => $request->request->get('post_id'),
+		'email' => $request->request->get('email'),
+		'comment' => $request->request->get('comment'),
+	];
+
+	$commentRepo = new SB\Repo\Comment($app['db']);
+	$commentRepo->insert($comment);
+
+	return $app->redirect('/read/' . $comment['post_id']);
+});
+
 $app->run();
