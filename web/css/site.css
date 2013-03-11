@@ -61,3 +61,48 @@ header {
 	content: "";
 }
 
+.post h1 {
+	border-bottom: solid 1px #F5DDA1;
+	font-size: 30px;
+	color: #E29E0D;
+}
+
+.post .content {
+	border-bottom: solid 1px #F5DDA1;
+	padding-bottom: 20px;
+}
+
+.comment-container {
+	margin: 5px 0;
+	border: solid 1px #A9A9A9;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #F1F1F1;
+}
+
+.comment-container .email {
+	margin-left: 25px;
+}
+
+.new-comment {
+	width: 415px;
+	margin: 15px 0;
+}
+
+.new-comment h2 {
+	font-size: 25px;
+	color: #E29E0D;
+	margin-bottom: 5px;
+	line-height: 20px
+}
+
+.new-comment .comment textarea {
+	height: 75px;
+	width: 400px;
+	margin-bottom: 2px;
+}
+
+.new-comment .email input {
+	width: 400px;
+	margin-bottom: 2px;
+}
