@@ -36,4 +36,28 @@ header {
 
 .post-listing .content {
 	font-size: 18px;
+	margin-bottom: 10px;
 }
+
+.post-listing .meta {
+	border-top: solid 1px #F5DDA1;
+	border-bottom: solid 1px #F5DDA1;
+}
+
+.post-listing ul {
+	margin: 0;
+}
+
+.post-listing .meta ul li {
+	display: inline;
+}
+
+.post-listing .meta ul li:after {
+	content: "|";
+	margin-left: 5px;
+}
+
+.post-listing .meta ul li:last-child:after {
+	content: "";
+}
+
