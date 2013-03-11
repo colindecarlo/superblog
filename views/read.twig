@@ -5,4 +5,16 @@
 		<h1>{{ post.title }}</h1>
 		<div class="content">{{ post.content }}</div>
 	</div>
+
+	{% if comments is not empty %}
+		<div class="comment-list">
+			{% for comment in comments %}
+				<div class="comment-container">
+					<div class="comment">{{ comment.comment }}</div>
+					<div class="email">-- {{ comment.email|default('anonymous') }}</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
 {% endblock content %}

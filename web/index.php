@@ -71,14 +71,20 @@ $app->post('/admin/new', function (Request $request) use ($app) {
 });
 
 $app->get('/read/{postId}', function ($postId) use ($app) {
-	$repo = new SB\Repo\Post($app['db']);
-	$post = $repo->getPost($postId);
+	$postRepo = new SB\Repo\Post($app['db']);
+	$post = $postRepo->getPost($postId);
+
+	$commentRepo = new SB\Repo\Comment($app['db']);
+	$comments = $commentRepo->getCommentsForPost($postId);
 
 	if (empty($post)) {
 		$app->abort(404, 'Not Found');
 	}
 
-	return $app['twig']->render('read.twig', ['post' => $post]);
+	return $app['twig']->render('read.twig', [
+		'post' => $post,
+		'comments' => $comments,
+	]);
 })
 ->assert('postId', '\d+');
 
