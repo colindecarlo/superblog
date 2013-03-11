@@ -41,7 +41,10 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), [
 ]);
 
 $app->get('/', function () use ($app) {
-	return $app['twig']->render('home.twig');
+	$repo = new SB\Repo\Post($app['db']);
+	$posts = $repo->getPosts();
+
+	return $app['twig']->render('home.twig', ['posts' => $posts]);
 });
 
 $app->get('/login', function (Request $request) use ($app) {

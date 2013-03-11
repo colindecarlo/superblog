@@ -23,3 +23,13 @@ header {
 .post-element {
 	margin-bottom: 15px;
 }
+
+.post-listing h1 {
+	font-size: 30px;
+	border-bottom: solid 1px #F5DDA1;
+	color: #E29E0D;
+}
+
+.post-listing .content {
+	font-size: 18px;
+}
