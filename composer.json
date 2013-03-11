@@ -5,5 +5,10 @@
 		"symfony/twig-bridge" : "~2.1",
 		"symfony/security" : "~2.1",
 		"doctrine/dbal" : "2.2.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"SB": "lib"
+		}
 	}
 }

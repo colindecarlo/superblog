@@ -56,12 +56,15 @@ $app->get('/admin/new', function () use ($app) {
 });
 
 $app->post('/admin/new', function (Request $request) use ($app) {
-	return $app['twig']->render('admin/new.twig', [
-		'post' => [
-			'title' => $request->request->get('title'),
-			'content'=> $request->request->get('content')
-		]
-	]);
+	$post = [
+		'title' => $request->request->get('title'),
+		'content'=> $request->request->get('content')
+	];
+
+	$repo = new SB\Repo\Post($app['db']);
+	$repo->insert($post);
+
+	return $app->redirect('/');
 });
 
 $app->run();
