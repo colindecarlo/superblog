@@ -1,0 +1,5 @@
+driver: com.mysql.jdbc.Driver
+classpath: /path/to/mysql-connector-java-5.1.23-bin.jar
+url: jdbc:mysql://host/dbname
+username: your_username
+password: your_password
