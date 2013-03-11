@@ -48,6 +48,15 @@ $app->register(new SB\Provider\RepoServiceProvider(), [
 
 $app->get('/', function () use ($app) {
 	$posts = $app['repo.post']->getPosts();
+	$counts = $app['repo.comment']->getCommentCounts();
+
+	foreach ($posts as &$post) {
+		$postId = $post['post_id'];
+		$post['comment_count'] = 0;
+		if (isset($counts[$postId])) {
+			$post['comment_count'] = $counts[$postId];
+		}
+	}
 
 	return $app['twig']->render('home.twig', ['posts' => $posts]);
 });

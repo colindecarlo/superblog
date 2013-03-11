@@ -5,6 +5,13 @@
 		<div class="post-listing">
 			<h1><a href="/read/{{ post.post_id }}">{{ post.title }}</a></h1>
 			<div class="content">{{ post.content }}</div>
+			<div class="meta">
+				{%- if post.comment_count == 0 -%}
+					no comments
+				{%- else -%}
+					{{ post.comment_count }} comment{{ post.comment_count > 1 ? 's' : '' }}
+				{%- endif -%}
+			</div>
 		</div>
 	{% endfor %}
 {% endblock content %}
