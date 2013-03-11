@@ -28,6 +28,18 @@ $app->register(new Silex\Provider\TwigServiceProvider(),
 	['twig.path' => __DIR__ . '/../views']
 );
 
+// register the doctrin service provider
+$app->register(new Silex\Provider\DoctrineServiceProvider(), [
+	'db.options' => [
+		'driver' => 'pdo_mysql',
+		'dbname' => 'superblog',
+		'host' => 'localhost',
+		'user' => 'blogist',
+		'password' => 'blogistpass',
+		'charset' => 'utf8',
+	]
+]);
+
 $app->get('/', function () use ($app) {
 	return $app['twig']->render('home.twig');
 });
