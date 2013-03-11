@@ -40,9 +40,14 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), [
 	]
 ]);
 
+// register the Repo Service Provider
+$app->register(new SB\Provider\RepoServiceProvider(), [
+	'repo.classes' => ['post', 'comment'],
+	'repo.connection' => $app['db']
+]);
+
 $app->get('/', function () use ($app) {
-	$repo = new SB\Repo\Post($app['db']);
-	$posts = $repo->getPosts();
+	$posts = $app['repo.post']->getPosts();
 
 	return $app['twig']->render('home.twig', ['posts' => $posts]);
 });
@@ -64,18 +69,14 @@ $app->post('/admin/new', function (Request $request) use ($app) {
 		'content'=> $request->request->get('content')
 	];
 
-	$repo = new SB\Repo\Post($app['db']);
-	$repo->insert($post);
+	$app['repo.post']->insert($post);
 
 	return $app->redirect('/');
 });
 
 $app->get('/read/{postId}', function ($postId) use ($app) {
-	$postRepo = new SB\Repo\Post($app['db']);
-	$post = $postRepo->getPost($postId);
-
-	$commentRepo = new SB\Repo\Comment($app['db']);
-	$comments = $commentRepo->getCommentsForPost($postId);
+	$post = $app['repo.post']->getPost($postId);
+	$comments = $app['repo.comment']->getCommentsForPost($postId);
 
 	if (empty($post)) {
 		$app->abort(404, 'Not Found');
@@ -95,8 +96,7 @@ $app->post('/comment', function (Request $request) use ($app) {
 		'comment' => $request->request->get('comment'),
 	];
 
-	$commentRepo = new SB\Repo\Comment($app['db']);
-	$commentRepo->insert($comment);
+	$app['repo.comment']->insert($comment);
 
 	return $app->redirect('/read/' . $comment['post_id']);
 });
