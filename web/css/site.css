@@ -25,9 +25,13 @@ header {
 }
 
 .post-listing h1 {
-	font-size: 30px;
 	border-bottom: solid 1px #F5DDA1;
+}
+
+.post-listing h1 a {
+	font-size: 30px;
 	color: #E29E0D;
+	text-decoration: none;
 }
 
 .post-listing .content {

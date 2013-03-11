@@ -70,4 +70,16 @@ $app->post('/admin/new', function (Request $request) use ($app) {
 	return $app->redirect('/');
 });
 
+$app->get('/read/{postId}', function ($postId) use ($app) {
+	$repo = new SB\Repo\Post($app['db']);
+	$post = $repo->getPost($postId);
+
+	if (empty($post)) {
+		$app->abort(404, 'Not Found');
+	}
+
+	return $app['twig']->render('read.twig', ['post' => $post]);
+})
+->assert('postId', '\d+');
+
 $app->run();

@@ -13,4 +13,10 @@ class Post extends BaseRepo
 		$sql = 'SELECT * FROM posts ORDER BY created DESC';
 		return $this->_conn->fetchAll($sql);
 	}
+
+	public function getPost($postId)
+	{
+		$sql = 'SELECT * FROM posts WHERE post_id = ?';
+		return $this->_conn->fetchAssoc($sql, [$postId]);
+	}
 }
