@@ -18,5 +18,5 @@ installation
 * install the applications dependencies with composer
 * create the superblog database
 * create a `liquibase.properties` file in the `migrations` directory
-** there is an example in the `migrations` directory called `liquibase.properties.example` that should be useful
+ * there is an example in the `migrations` directory called `liquibase.properties.example` that should be useful
 * run liquibase update to run the migrations in the `migrations` directory
